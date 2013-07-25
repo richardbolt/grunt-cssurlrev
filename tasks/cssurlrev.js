@@ -17,6 +17,7 @@ module.exports = function(grunt) {
         assets: ''  // Assets file - false or empty to use grunt.filerev.summary
       });
 
+    var assets;
     if (options.assets && grunt.file.isFile(options.assets)) {
       assets = grunt.file.readJSON(options.assets);
     } else {
