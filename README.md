@@ -1,4 +1,4 @@
-# grunt-cssurlrev
+# grunt-cssurlrev [![Build Status](https://travis-ci.org/richardbolt/grunt-cssurlrev.png?branch=master)](https://travis-ci.org/richardbolt/grunt-cssurelrev)
 
 > Change asset paths inside css files based on output from grunt-filerev
 
@@ -20,16 +20,18 @@ grunt.loadNpmTasks('grunt-cssurlrev');
 ## The "cssurlrev" task
 
 ### Overview
+This plugin will take css files and modify url links inside them (in place) that point to versioned assets versioned either with [`grunt.filerev`](https://github.com/yeoman/grunt-filerev) or from a specified json file. Please note that it modifies files in place at present.
+
 In your project's Gruntfile, add a section named `cssurlrev` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
   cssurlrev: {
     options: {
-      // Task-specific options go here.
+      assets: 'path/to/assets.json'
     },
     your_target: {
-      // Target-specific file lists and/or options go here.
+      src: ['public/css/*.css']
     },
   },
 })
@@ -37,36 +39,16 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
+#### options.assets
 Type: `String`
-Default value: `',  '`
+Default value: `''`
 
-A string value that is used to do something with whatever.
-
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
-
-A string value that is used to do something else with whatever else.
+A file path that is used to load a json object from. If empty (default), then `grunt.filerev.summary` is used to modify url paths.
 
 ### Usage Examples
 
 #### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
-
-```js
-grunt.initConfig({
-  cssurlrev: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
-```
-
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
+In this example, files matching `public/css/*.css` are modified to have any links to assets modified with `grunt.filerev.summary` updated.
 
 ```js
 grunt.initConfig({
@@ -76,7 +58,7 @@ grunt.initConfig({
       punctuation: ' !!!',
     },
     files: {
-      'dest/default_options': ['src/testing', 'src/123'],
+      src: ['public/css/*.css'],
     },
   },
 })
