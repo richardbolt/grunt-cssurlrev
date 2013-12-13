@@ -1,6 +1,6 @@
 # grunt-cssurlrev [![Build Status](https://travis-ci.org/richardbolt/grunt-cssurlrev.png?branch=master)](https://travis-ci.org/richardbolt/grunt-cssurelrev)
 
-> Change asset paths inside css files based on output from grunt-filerev
+> Change asset paths inside css files based on output from grunt-filerev, grunt-hashmap, or other similar plugins
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
