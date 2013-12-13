@@ -110,33 +110,5 @@ grunt.initConfig({
 })
 ```
 
-#### Hashmap Example
-This example shows how to use it with `grunt.hashmap` and a more customized file renaming scheme.
-
-```js
-grunt.initConfig({
-  hashmap: {
-    options: {
-      output: 'assets/hashmap.json',
-      rename: '#{= dirname}/#{= hash}.#{= basename}#{= extname}',
-      keep: false,
-      hashlen: 6
-    },
-    all: {
-      cwd: 'public',
-      src: '**/*.{css,js,pdf,eps,png,jpg,jpeg,gif,eot,svg,ttf,woff}',
-      dest: 'public'
-    }
-  },
-  cssurlrev: {
-    options: {
-      assets: '<%= hashmap.options.output %>',
-      hashmap_rename: '<%= hashmap.options.rename %>'
-    },
-    src: 'public/css/**/*.css'
-  },
-})
-```
-
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
