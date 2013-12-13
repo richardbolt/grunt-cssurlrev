@@ -30,8 +30,8 @@ exports.cssurlrev = {
   default_options: function(test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp/default/test.css');
-    var expected = grunt.file.read('test/expected/default_options.css');
+    var actual = grunt.file.read('tmp/default.css');
+    var expected = grunt.file.read('test/expected/default.css');
     test.equal(actual, expected, 'should update paths in css file based on grunt.filerev.summary.');
 
     test.done();
@@ -39,9 +39,27 @@ exports.cssurlrev = {
   custom_options: function(test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp/custom/test.css');
-    var expected = grunt.file.read('test/expected/custom_options.css');
+    var actual = grunt.file.read('tmp/custom.css');
+    var expected = grunt.file.read('test/expected/custom.css');
     test.equal(actual, expected, 'should update paths in css file based on an assets json file.');
+
+    test.done();
+  },
+  hashmap_options: function(test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/hashmap.css');
+    var expected = grunt.file.read('test/expected/hashmap.css');
+    test.equal(actual, expected, 'should update paths in css file based on an assets json file and hashmap format');
+
+    test.done();
+  },
+  prefix_options: function(test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/prefix.css');
+    var expected = grunt.file.read('test/expected/prefix.css');
+    test.equal(actual, expected, 'should update paths in css file based on an assets json file and a prefix');
 
     test.done();
   },
