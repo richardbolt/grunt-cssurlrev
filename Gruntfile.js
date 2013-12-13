@@ -30,37 +30,38 @@ module.exports = function(grunt) {
 
     copy: {
       tests: {
-        files: [
-          {
-            expand: true,
-            cwd: 'test/fixtures/',
-            src: ['*.css'],
-            dest: 'tmp/default/'
-          },
-          {
-            expand: true,
-            cwd: 'test/fixtures/',
-            src: ['*.css'],
-            dest: 'tmp/custom/'
-          }
-        ]
+        files: { 
+          'tmp/default.css':  'test/fixtures/test.css',
+          'tmp/custom.css':   'test/fixtures/test.css',
+          'tmp/hashmap.css':   'test/fixtures/test.css',
+          'tmp/prefix.css':   'test/fixtures/test.css',
+        }
       }
     },
 
     // Configuration to be run (and then tested).
     cssurlrev: {
       default_options: {
-        files: {
-          src: ['tmp/default/*.css'],
-        },
+        src: 'tmp/default.css'
       },
       custom_options: {
         options: {
           assets: 'test/fixtures/assets.json'
         },
-        files: {
-          src: ['tmp/custom/*.css'],
+        src: 'tmp/custom.css'
+      },
+      hashmap_mode: {
+        options: {
+          assets: 'test/fixtures/hashmap.json',
+          hashmap_rename: '#{= dirname}/#{= hash}.#{= basename}#{= extname}'
         },
+        src: 'tmp/hashmap.css'
+      },
+      prefix_mode: {
+        options: {
+          prefix: 'dist/'
+        },
+        src: 'tmp/prefix.css'
       },
     },
 
