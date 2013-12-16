@@ -59,7 +59,7 @@ module.exports = function(grunt) {
         // url matches need to be trimmed
         // possible example: "url('../fonts/iconfont/iconfont.eot?#iefix')"
         // trim the beginning and end, potentially leading slashes and ../
-        original_url = original_url.replace(/url\(\s*['"]?(\.\.\/)*\/?([^'"\)?]+)(\?[^'"]*)?['"]?\s*\)/, '$2');
+        original_url = original_url.replace(/url\(\s*['"]?(\.\.\/)*\/?([^'"\)?#]+)([^'"]*)?['"]?\s*\)/, '$2');
         if (original_url in url_map){
           var new_url = url_map[original_url];
           if (options.hashmap_rename){
