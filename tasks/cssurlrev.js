@@ -56,20 +56,27 @@ module.exports = function(grunt) {
         return;
       }
       matches.forEach(function(original_url){
+
         // url matches need to be trimmed
         // possible example: "url('../fonts/iconfont/iconfont.eot?#iefix')"
         // trim the beginning and end, potentially leading slashes and ../
         original_url = original_url.replace(/url\(\s*['"]?(\.\.\/)*\/?([^'"\)?#]+)([^'"]*)?['"]?\s*\)/, '$2');
+
+        if (original_url.substr(0, 2) === './') {
+          original_url = original_url.substr(2);
+        }
+
         if (original_url in url_map){
           var new_url = url_map[original_url];
           if (options.hashmap_rename){
             new_url = hashmapRename(original_url);
           }
           if (options.prefix){
-            new_url = options.prefix + new_url; 
+            new_url = options.prefix + new_url;
           }
           css = css.replace(original_url, new_url);
         }
+
       });
       if (original !== css) {
         grunt.log.writeln('✔ '.green + file + (' was changed.').grey);
