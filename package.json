@@ -1,7 +1,7 @@
 {
   "name": "grunt-cssurlrev",
   "description": "Change asset paths inside css files based on output from grunt-filerev, grunt-hashmap, or other similar plugins",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "homepage": "https://github.com/richardbolt/grunt-cssurlrev",
   "author": {
     "name": "Richard Bolt",
@@ -35,7 +35,7 @@
     "grunt": "~0.4.1"
   },
   "peerDependencies": {
-    "grunt": "~0.4.1"
+    "grunt": ">=0.4.1"
   },
   "keywords": [
     "gruntplugin"
